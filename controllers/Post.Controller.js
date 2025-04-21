@@ -22,7 +22,7 @@ export const CreatePost = async (req, res) => {
 
     await post.save();
      return  res.status(201).json({
-      message: 'Post created successfully!',
+      message: 'Post created success!',
       post: {
         id: post._id,
         description: post.description,
