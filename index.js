@@ -7,7 +7,12 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser';
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',  // Your frontend URL
+    credentials: true,  // This allows cookies to be sent and received
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Make sure your methods are allowed
+    allowedHeaders: ['Content-Type', 'Authorization']  // Ensure these headers are allowed
+}));
 dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));

@@ -3,12 +3,13 @@ import { cloudinary } from "../utility/cloudinary.js";
 export const CreatePost = async (req, res) => {
   try {
     const { description } = req.body;
+    const id  = req.id;
     if (!description) {
       return res.status(400).json({ error: 'Description is required.' });
     }
     const newPost = {
       description,
-      author: "6805e514405968c19d593aa1",
+      author: id,
     };
     if (req.file) {
       const result = await cloudinary.uploader.upload(req.file.path, {
@@ -27,6 +28,7 @@ export const CreatePost = async (req, res) => {
         mediaUrl: post.mediaUrl || null,
         mediaType: post.mediaType || null,
         createdAt: post.createdAt,
+        author: post.author || req.id,
       },
     });
   } catch (error) {
