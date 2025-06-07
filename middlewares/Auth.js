@@ -17,8 +17,7 @@ import jwt from "jsonwebtoken";
           });
         }
         req.id = decode.id;
-        console.log(decode.id, "id");
-        
+        console.log(decode.id, "id");  
         next();
       } catch (error) {
         console.log(error);
