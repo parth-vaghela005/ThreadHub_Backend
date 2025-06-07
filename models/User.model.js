@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  username: {
+    username: {
     type: String,
     required: true,
     unique: true,
@@ -47,6 +47,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  posts: [{
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Post'
+}],
   createdAt: {
     type: Date,
     default: Date.now
